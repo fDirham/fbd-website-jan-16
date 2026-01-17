@@ -155,7 +155,79 @@ export default function ComponentName({ prop1, prop2 }: ComponentNameProps) {
 
 **Breakpoints in App.css:**
 - **1024px and below**: Reduce grid columns (e.g., 3 columns → 2 columns)
-- **768px and below**: Mobile layout (single column, full width bio, stacked layout)
+- **770px and below**: Mobile layout (single column, full width bio, stacked layout)
+- **771px and above**: Desktop circular carousel layout
+
+### Circular Carousel Animation (Desktop Only)
+
+**Overview:**
+On desktop (>770px), project cards orbit in a circle around the centered bio. Cards remain upright while moving in their circular path.
+
+**Animation Timing (CSS Variables in App.css):**
+```css
+--circle-carousel-delay: 1s;        /* When first card starts fading in */
+--carousel-stagger-interval: 0.5s;  /* Time between each card appearing */
+--carousel-fade-in-duration: 1.2s;  /* How long fade-in takes */
+--orbit-radius: 450px;              /* Circle radius */
+--orbit-duration: 60s;              /* Time for one complete orbit */
+```
+
+**Animation Sequence:**
+1. **Bio** fades in at 0.2s
+2. **Bio links** fade in together at 1.0s
+3. **Project cards** fade in with stagger:
+   - Card 1: 1.0s
+   - Card 2: 1.5s
+   - Card 3: 2.0s
+   - Card 4: 2.5s
+   - Card 5: 3.0s
+   - Card 6: 3.5s
+4. **Cards start orbiting** immediately when they appear (same delay as fade-in)
+
+**How It Works:**
+- Each card uses two animations: `fadeIn` + `orbit[N]`
+- Orbit animations use `rotate(Ndeg) translate(radius) rotate(-Ndeg)` to keep cards upright
+- Cards are positioned at 60° intervals (6 cards × 60° = 360°)
+- Hovering on any card pauses the entire orbit (CSS `:has()` selector)
+
+**Adding More Projects:**
+
+If you add a 7th, 8th, or more project cards:
+
+1. **Update the angle calculation:**
+   - New angle interval = 360° ÷ number of cards
+   - Example: 7 cards = 51.43° intervals, 8 cards = 45° intervals
+
+2. **Create new orbit keyframes in App.css:**
+   ```css
+   @keyframes orbit[ANGLE] {
+     from {
+       transform: rotate([ANGLE]deg) translate(var(--orbit-radius)) rotate(-[ANGLE]deg);
+     }
+     to {
+       transform: rotate([ANGLE+360]deg) translate(var(--orbit-radius)) rotate(-[ANGLE+360]deg);
+     }
+   }
+   ```
+
+3. **Add new nth-child rules in App.css:**
+   ```css
+   .project-card:nth-child(7) {
+     animation:
+       fadeIn var(--carousel-fade-in-duration) ease-out
+         calc(var(--circle-carousel-delay) + 6 * var(--carousel-stagger-interval)) backwards,
+       orbit[ANGLE] var(--orbit-duration) linear
+         calc(var(--circle-carousel-delay) + 6 * var(--carousel-stagger-interval)) infinite;
+   }
+   ```
+
+4. **Update JavaScript constants in Projects.tsx:**
+   - The `CIRCLE_CAROUSEL_DELAY` and `CAROUSEL_STAGGER_INTERVAL` constants are already dynamic
+   - No changes needed - they automatically calculate: `${CIRCLE_CAROUSEL_DELAY + index * CAROUSEL_STAGGER_INTERVAL}s`
+
+5. **Consider adjusting orbit radius:**
+   - More cards = more crowding
+   - Increase `--orbit-radius` if cards overlap (try 500px, 550px, etc.)
 
 ### Asset Management
 

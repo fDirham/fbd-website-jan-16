@@ -16,6 +16,12 @@
   --project-card-icon-size: 32px;
   --app-top-padding: 100px;
 
+  --orbit-radius: 450px;
+  --orbit-duration: 50s;
+  --circle-carousel-delay: 1s;
+  --carousel-stagger-interval: 0.5s;
+  --carousel-fade-in-duration: 1.2s;
+
   /* Light theme (default) */
   --color-bg: #f8f9fa;
   --color-text-primary: #1a1a1a;
@@ -58,17 +64,6 @@ body,
 }
 
 /* Keyframe Animations */
-@keyframes fadeInFromBottom {
-  from {
-    opacity: 0;
-    transform: translateY(60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @keyframes fadeInFromLeft {
   from {
     opacity: 0;
@@ -89,6 +84,61 @@ body,
   }
 }
 
+/* Orbit animations - each card orbits while staying upright */
+@keyframes orbit0 {
+  from {
+    transform: rotate(0deg) translate(var(--orbit-radius)) rotate(-0deg);
+  }
+  to {
+    transform: rotate(360deg) translate(var(--orbit-radius)) rotate(-360deg);
+  }
+}
+
+@keyframes orbit60 {
+  from {
+    transform: rotate(60deg) translate(var(--orbit-radius)) rotate(-60deg);
+  }
+  to {
+    transform: rotate(420deg) translate(var(--orbit-radius)) rotate(-420deg);
+  }
+}
+
+@keyframes orbit120 {
+  from {
+    transform: rotate(120deg) translate(var(--orbit-radius)) rotate(-120deg);
+  }
+  to {
+    transform: rotate(480deg) translate(var(--orbit-radius)) rotate(-480deg);
+  }
+}
+
+@keyframes orbit180 {
+  from {
+    transform: rotate(180deg) translate(var(--orbit-radius)) rotate(-180deg);
+  }
+  to {
+    transform: rotate(540deg) translate(var(--orbit-radius)) rotate(-540deg);
+  }
+}
+
+@keyframes orbit240 {
+  from {
+    transform: rotate(240deg) translate(var(--orbit-radius)) rotate(-240deg);
+  }
+  to {
+    transform: rotate(600deg) translate(var(--orbit-radius)) rotate(-600deg);
+  }
+}
+
+@keyframes orbit300 {
+  from {
+    transform: rotate(300deg) translate(var(--orbit-radius)) rotate(-300deg);
+  }
+  to {
+    transform: rotate(660deg) translate(var(--orbit-radius)) rotate(-660deg);
+  }
+}
+
 /* Bio Section */
 .bio {
   display: flex;
@@ -97,7 +147,7 @@ body,
   gap: var(--spacing-sm);
   width: var(--bio-width);
   flex-shrink: 0;
-  animation: fadeInFromBottom 0.8s ease-out 0.2s;
+  animation: fadeIn 0.8s ease-out 0.2s;
   animation-fill-mode: backwards;
 }
 
@@ -131,8 +181,7 @@ body,
   line-height: 1.6;
   margin: 0;
   max-width: 400px;
-  animation: fadeIn 0.6s ease-out 1s;
-  animation-fill-mode: backwards;
+  text-align: center;
 }
 
 .bio__links {
@@ -142,6 +191,7 @@ body,
   gap: var(--spacing-sm);
   width: 100%;
   margin-top: var(--spacing-sm);
+  justify-content: center;
 }
 
 /* Bio Link Component */
@@ -157,8 +207,6 @@ body,
   font-weight: 700;
   transition: background-color 0.2s ease;
   flex-grow: 0;
-  animation: fadeInFromLeft 0.5s ease-out;
-  animation-fill-mode: backwards;
 }
 
 .bio-link:hover {
@@ -199,7 +247,8 @@ body,
   cursor: pointer;
   text-decoration: none;
   color: inherit;
-  animation: fadeInFromLeft 0.6s ease-out;
+  animation: fadeIn var(--carousel-fade-in-duration) ease-out
+    var(--circle-carousel-delay);
   animation-fill-mode: backwards;
 }
 
@@ -234,6 +283,155 @@ body,
   color: var(--color-text-primary);
   line-height: 1.5;
   margin: 0;
+}
+
+/* Desktop Circular Layout */
+@media (min-width: 771px) {
+  .app {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bio {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    align-items: center;
+  }
+
+  .projects {
+    position: relative;
+    width: calc(var(--orbit-radius) * 2);
+    height: calc(var(--orbit-radius) * 2);
+    display: block;
+  }
+
+  /* Pause all cards when hovering over any card */
+  .projects:has(.project-card:hover) .project-card {
+    animation-play-state: paused;
+  }
+
+  .project-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -57px;
+    /* Fade in and start orbiting at the same time */
+    animation:
+      fadeIn var(--carousel-fade-in-duration) ease-out
+        var(--circle-carousel-delay) backwards,
+      orbit0 var(--orbit-duration) linear var(--circle-carousel-delay) infinite;
+  }
+
+  .project-card:nth-child(1) {
+    animation:
+      fadeIn var(--carousel-fade-in-duration) ease-out
+        var(--circle-carousel-delay) backwards,
+      orbit0 var(--orbit-duration) linear var(--circle-carousel-delay) infinite;
+  }
+
+  .project-card:nth-child(2) {
+    animation:
+      fadeIn var(--carousel-fade-in-duration) ease-out
+        calc(var(--circle-carousel-delay) + var(--carousel-stagger-interval))
+        backwards,
+      orbit60 var(--orbit-duration) linear
+        calc(var(--circle-carousel-delay) + var(--carousel-stagger-interval))
+        infinite;
+  }
+
+  .project-card:nth-child(3) {
+    animation:
+      fadeIn var(--carousel-fade-in-duration) ease-out
+        calc(
+          var(--circle-carousel-delay) + 2 * var(--carousel-stagger-interval)
+        )
+        backwards,
+      orbit120 var(--orbit-duration) linear
+        calc(
+          var(--circle-carousel-delay) + 2 * var(--carousel-stagger-interval)
+        )
+        infinite;
+  }
+
+  .project-card:nth-child(4) {
+    animation:
+      fadeIn var(--carousel-fade-in-duration) ease-out
+        calc(
+          var(--circle-carousel-delay) + 3 * var(--carousel-stagger-interval)
+        )
+        backwards,
+      orbit180 var(--orbit-duration) linear
+        calc(
+          var(--circle-carousel-delay) + 3 * var(--carousel-stagger-interval)
+        )
+        infinite;
+  }
+
+  .project-card:nth-child(5) {
+    animation:
+      fadeIn var(--carousel-fade-in-duration) ease-out
+        calc(
+          var(--circle-carousel-delay) + 4 * var(--carousel-stagger-interval)
+        )
+        backwards,
+      orbit240 var(--orbit-duration) linear
+        calc(
+          var(--circle-carousel-delay) + 4 * var(--carousel-stagger-interval)
+        )
+        infinite;
+  }
+
+  .project-card:nth-child(6) {
+    animation:
+      fadeIn var(--carousel-fade-in-duration) ease-out
+        calc(
+          var(--circle-carousel-delay) + 5 * var(--carousel-stagger-interval)
+        )
+        backwards,
+      orbit300 var(--orbit-duration) linear
+        calc(
+          var(--circle-carousel-delay) + 5 * var(--carousel-stagger-interval)
+        )
+        infinite;
+  }
+
+  .project-card:hover {
+    width: 300px;
+    scale: 1.05;
+  }
+}
+
+/* Accessibility: Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    animation: none !important;
+  }
+
+  @media (min-width: 771px) {
+    .project-card:nth-child(1) {
+      transform: rotate(0deg) translate(var(--orbit-radius)) rotate(-0deg);
+    }
+    .project-card:nth-child(2) {
+      transform: rotate(60deg) translate(var(--orbit-radius)) rotate(-60deg);
+    }
+    .project-card:nth-child(3) {
+      transform: rotate(120deg) translate(var(--orbit-radius)) rotate(-120deg);
+    }
+    .project-card:nth-child(4) {
+      transform: rotate(180deg) translate(var(--orbit-radius)) rotate(-180deg);
+    }
+    .project-card:nth-child(5) {
+      transform: rotate(240deg) translate(var(--orbit-radius)) rotate(-240deg);
+    }
+    .project-card:nth-child(6) {
+      transform: rotate(300deg) translate(var(--orbit-radius)) rotate(-300deg);
+    }
+  }
 }
 
 /* Responsive Design */

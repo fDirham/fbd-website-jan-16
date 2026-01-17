@@ -10,6 +10,10 @@ import {
 } from "../constants/images";
 import useTheme from "../contexts/theme/useTheme";
 
+// Animation timing constants (should match CSS variables)
+const CIRCLE_CAROUSEL_DELAY = 1; // seconds - matches --circle-carousel-delay
+const CAROUSEL_STAGGER_INTERVAL = 0.5; // seconds - matches --carousel-stagger-interval
+
 export default function Projects() {
   const { theme } = useTheme();
 
@@ -67,7 +71,7 @@ export default function Projects() {
           description={project.description}
           url={project.url}
           style={{
-            animationDelay: `${3 + index * 0.5}s`,
+            animationDelay: `${CIRCLE_CAROUSEL_DELAY + index * CAROUSEL_STAGGER_INTERVAL}s`,
           }}
         />
       ))}

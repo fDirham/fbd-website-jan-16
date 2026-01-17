@@ -46,21 +46,18 @@ export default function Bio() {
     <div className="bio">
       <img src={HEADSHOT_IMAGE} alt="Fajar Dirham" className="bio__headshot" />
       <h1 className="bio__name">Fajar Dirham</h1>
-      <p className="bio__title">Software Guy / Writer / 😎</p>
+      <p className="bio__title">Software Dev / Writer / 😎</p>
       <p className="bio__description">
         I like building stuff, aiming to get a novel published, and I make
         content about the books i read.
       </p>
       <div className="bio__links">
-        {links.map((link, index) => (
+        {links.map((link) => (
           <BioLink
             key={link.label}
             icon={link.icon}
             label={link.label}
             href={link.href}
-            style={{
-              animationDelay: `${1.4 + index * 0.12}s`,
-            }}
           />
         ))}
       </div>
