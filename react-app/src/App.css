@@ -1,21 +1,27 @@
 :root {
+  /* Spacing Scale */
   --spacing-xxs: 0.25rem;
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 1.5rem;
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
+
+  /* Border Radius */
   --border-radius-xxs: 2px;
   --border-radius-xs: 4px;
   --border-radius-sm: 8px;
   --border-radius-md: 12px;
   --border-radius-pill: 120px;
   --border-radius-round: 50%;
+
+  /* Component Sizes */
   --bio-width: 260px;
   --bio-link-icon-size: 18px;
   --project-card-icon-size: 32px;
   --app-top-padding: 100px;
 
+  /* Circular Carousel Animation */
   --orbit-radius: 450px;
   --orbit-duration: 50s;
   --circle-carousel-delay: 1s;
@@ -64,17 +70,6 @@ body,
 }
 
 /* Keyframe Animations */
-@keyframes fadeInFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -147,8 +142,7 @@ body,
   gap: var(--spacing-sm);
   width: var(--bio-width);
   flex-shrink: 0;
-  animation: fadeIn 0.8s ease-out 0.2s;
-  animation-fill-mode: backwards;
+  animation: fadeIn 0.8s ease-out 0.2s backwards;
 }
 
 .bio__headshot {
@@ -247,9 +241,8 @@ body,
   cursor: pointer;
   text-decoration: none;
   color: inherit;
-  animation: fadeIn var(--carousel-fade-in-duration) ease-out
-    var(--circle-carousel-delay);
-  animation-fill-mode: backwards;
+  animation: fadeIn var(--carousel-fade-in-duration) ease-out var(--circle-carousel-delay) backwards;
+  box-shadow: 2px 10px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
 .project-card:hover {
@@ -320,84 +313,31 @@ body,
     top: 50%;
     margin-left: -150px;
     margin-top: -57px;
-    /* Fade in and start orbiting at the same time */
-    animation:
-      fadeIn var(--carousel-fade-in-duration) ease-out
-        var(--circle-carousel-delay) backwards,
-      orbit0 var(--orbit-duration) linear var(--circle-carousel-delay) infinite;
   }
 
+  /* Staggered fade-in and orbit animations for each card */
   .project-card:nth-child(1) {
-    animation:
-      fadeIn var(--carousel-fade-in-duration) ease-out
-        var(--circle-carousel-delay) backwards,
-      orbit0 var(--orbit-duration) linear var(--circle-carousel-delay) infinite;
+    animation: fadeIn var(--carousel-fade-in-duration) ease-out var(--circle-carousel-delay) backwards, orbit0 var(--orbit-duration) linear var(--circle-carousel-delay) infinite;
   }
 
   .project-card:nth-child(2) {
-    animation:
-      fadeIn var(--carousel-fade-in-duration) ease-out
-        calc(var(--circle-carousel-delay) + var(--carousel-stagger-interval))
-        backwards,
-      orbit60 var(--orbit-duration) linear
-        calc(var(--circle-carousel-delay) + var(--carousel-stagger-interval))
-        infinite;
+    animation: fadeIn var(--carousel-fade-in-duration) ease-out calc(var(--circle-carousel-delay) + var(--carousel-stagger-interval)) backwards, orbit60 var(--orbit-duration) linear calc(var(--circle-carousel-delay) + var(--carousel-stagger-interval)) infinite;
   }
 
   .project-card:nth-child(3) {
-    animation:
-      fadeIn var(--carousel-fade-in-duration) ease-out
-        calc(
-          var(--circle-carousel-delay) + 2 * var(--carousel-stagger-interval)
-        )
-        backwards,
-      orbit120 var(--orbit-duration) linear
-        calc(
-          var(--circle-carousel-delay) + 2 * var(--carousel-stagger-interval)
-        )
-        infinite;
+    animation: fadeIn var(--carousel-fade-in-duration) ease-out calc(var(--circle-carousel-delay) + 2 * var(--carousel-stagger-interval)) backwards, orbit120 var(--orbit-duration) linear calc(var(--circle-carousel-delay) + 2 * var(--carousel-stagger-interval)) infinite;
   }
 
   .project-card:nth-child(4) {
-    animation:
-      fadeIn var(--carousel-fade-in-duration) ease-out
-        calc(
-          var(--circle-carousel-delay) + 3 * var(--carousel-stagger-interval)
-        )
-        backwards,
-      orbit180 var(--orbit-duration) linear
-        calc(
-          var(--circle-carousel-delay) + 3 * var(--carousel-stagger-interval)
-        )
-        infinite;
+    animation: fadeIn var(--carousel-fade-in-duration) ease-out calc(var(--circle-carousel-delay) + 3 * var(--carousel-stagger-interval)) backwards, orbit180 var(--orbit-duration) linear calc(var(--circle-carousel-delay) + 3 * var(--carousel-stagger-interval)) infinite;
   }
 
   .project-card:nth-child(5) {
-    animation:
-      fadeIn var(--carousel-fade-in-duration) ease-out
-        calc(
-          var(--circle-carousel-delay) + 4 * var(--carousel-stagger-interval)
-        )
-        backwards,
-      orbit240 var(--orbit-duration) linear
-        calc(
-          var(--circle-carousel-delay) + 4 * var(--carousel-stagger-interval)
-        )
-        infinite;
+    animation: fadeIn var(--carousel-fade-in-duration) ease-out calc(var(--circle-carousel-delay) + 4 * var(--carousel-stagger-interval)) backwards, orbit240 var(--orbit-duration) linear calc(var(--circle-carousel-delay) + 4 * var(--carousel-stagger-interval)) infinite;
   }
 
   .project-card:nth-child(6) {
-    animation:
-      fadeIn var(--carousel-fade-in-duration) ease-out
-        calc(
-          var(--circle-carousel-delay) + 5 * var(--carousel-stagger-interval)
-        )
-        backwards,
-      orbit300 var(--orbit-duration) linear
-        calc(
-          var(--circle-carousel-delay) + 5 * var(--carousel-stagger-interval)
-        )
-        infinite;
+    animation: fadeIn var(--carousel-fade-in-duration) ease-out calc(var(--circle-carousel-delay) + 5 * var(--carousel-stagger-interval)) backwards, orbit300 var(--orbit-duration) linear calc(var(--circle-carousel-delay) + 5 * var(--carousel-stagger-interval)) infinite;
   }
 
   .project-card:hover {
@@ -434,11 +374,7 @@ body,
   }
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  /* Flexbox will handle wrapping automatically */
-}
-
+/* Mobile Layout */
 @media (max-width: 770px) {
   :root {
     --bio-width: 100%;
