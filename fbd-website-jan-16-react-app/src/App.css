@@ -73,7 +73,6 @@ body,
   object-fit: cover;
   margin-bottom: var(--spacing-sm);
   align-self: center;
-  background-color: var(--color-card-bg);
 }
 
 .bio__name {
@@ -139,10 +138,12 @@ body,
 
 /* Projects Section */
 .projects {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--spacing-md);
   align-content: start;
+  align-items: start;
+  flex-direction: row;
 }
 
 /* Project Card Component */
@@ -153,6 +154,15 @@ body,
   padding: var(--spacing-sm);
   background-color: var(--color-card-bg);
   border-radius: var(--border-radius-md);
+  min-height: 114px;
+  width: 300px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  width: 310px;
+  box-shadow: 0 4px 12px rgba(255, 220, 44, 0.1);
 }
 
 .project-card__header {
@@ -185,9 +195,7 @@ body,
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .projects {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  /* Flexbox will handle wrapping automatically */
 }
 
 @media (max-width: 768px) {
@@ -216,6 +224,10 @@ body,
   }
 
   .projects {
-    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+
+  .project-card {
+    width: 100%;
   }
 }

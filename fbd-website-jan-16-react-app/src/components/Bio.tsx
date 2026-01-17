@@ -28,7 +28,7 @@ export default function Bio() {
       <p className="bio__title">Software Guy / Writer / 😎</p>
       <p className="bio__description">
         I like building stuff, aiming to get a novel published, and I make
-        content.
+        content about the books i read.
       </p>
       <div className="bio__links">
         <BioLink icon={tiktokIcon} label="TikTok" href="https://tiktok.com" />
