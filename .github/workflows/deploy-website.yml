@@ -41,4 +41,4 @@ jobs:
 
       - name: Sync dist/ with S3 bucket
         run: |
-          aws s3 sync react-app/dist s3://${{ env.BUCKET_NAME }} --delete
+          aws s3 sync react-app/dist s3://${{ vars.BUCKET_NAME }} --delete
