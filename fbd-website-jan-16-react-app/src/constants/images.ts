@@ -1,4 +1,4 @@
-const CDN_BASE_URL = "https://cdn.fajardirham.com/fbd-website/";
+export const CDN_BASE_URL = "https://cdn.fajardirham.com/fbd-website/";
 
 // Headshot
 export const HEADSHOT_IMAGE = CDN_BASE_URL + "headshot_256.jpg";

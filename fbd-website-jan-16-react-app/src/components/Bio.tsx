@@ -11,6 +11,7 @@ import {
   RESUME_ICON_WHITE,
   GITHUB_ICON_BLACK,
   GITHUB_ICON_WHITE,
+  CDN_BASE_URL,
 } from "../constants/images";
 
 export default function Bio() {
@@ -22,11 +23,23 @@ export default function Bio() {
   const githubIcon = theme === "dark" ? GITHUB_ICON_WHITE : GITHUB_ICON_BLACK;
 
   const links = [
-    { icon: tiktokIcon, label: "TikTok", href: "https://tiktok.com" },
-    { icon: YOUTUBE_ICON, label: "YouTube", href: "https://youtube.com" },
-    { icon: emailIcon, label: "Email", href: "mailto:email@example.com" },
-    { icon: resumeIcon, label: "Resume", href: "#" },
-    { icon: githubIcon, label: "GitHub", href: "https://github.com" },
+    {
+      icon: tiktokIcon,
+      label: "TikTok",
+      href: "https://tiktok.com/@fbdwrites",
+    },
+    {
+      icon: YOUTUBE_ICON,
+      label: "YouTube",
+      href: "https://youtube.com/@fbdwrites",
+    },
+    { icon: emailIcon, label: "Email", href: "mailto:fajarletters@gmail.com" },
+    {
+      icon: resumeIcon,
+      label: "Resume",
+      href: CDN_BASE_URL + "Fajar_Dirham_Resume.pdf",
+    },
+    { icon: githubIcon, label: "GitHub", href: "https://github.com/fDirham" },
   ];
 
   return (

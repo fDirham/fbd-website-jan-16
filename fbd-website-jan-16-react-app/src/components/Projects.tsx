@@ -22,37 +22,37 @@ export default function Projects() {
         title: "Promethea (Novel)",
         description:
           "In a matriarchal Spartan war-academy, a ruthless warrior captures enemy forces, rides flying Drakons, and masters telepathy on her quest to become one of history's greatest heroines.",
-        url: "https://example.com/promethea",
+        url: "https://l.fajardirham.com/promethea_sample",
       },
       {
         icon: BOOK_YAPPY_ICON,
         title: "Book Yappy",
         description: "iOS app to track your reading.",
-        url: "https://example.com/book-yappy",
+        url: "https://apps.apple.com/us/app/book-yappy-reading-tracker/id6747359808",
       },
       {
         icon: NEKO_FOCUS_ICON,
         title: "NekoFocus",
         description: "iOS app. Pomodoro timer + cats.",
-        url: "https://example.com/nekofocus",
+        url: "https://apps.apple.com/us/app/nekofocus-pomodoro-timer/id6737785097",
       },
       {
         icon: JUST_FOCUS_ICON,
         title: "Just Focus",
         description: "macOS app. Pomodoro timer in status bar",
-        url: "https://example.com/just-focus",
+        url: "https://apps.apple.com/us/app/just-focus-work-timer/id6615067696",
       },
       {
         icon: ROCKET_PIXELS_ICON,
         title: "Rocket Pixels",
         description: "Mobile game made in godot. Dodge asteroids!",
-        url: "https://example.com/rocket-pixels",
+        url: "https://apps.apple.com/us/app/rocket-pixels-space-runner/id6701996449",
       },
       {
         icon: githubIcon,
         title: "Open Source Projects",
         description: "JUST CHECK MY GITHUB!",
-        url: "https://github.com",
+        url: "https://github.com/fDirham",
       },
     ];
   };
