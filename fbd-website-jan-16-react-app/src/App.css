@@ -1,11 +1,4 @@
 :root {
-  --color-bg: #f8f9fa;
-  --color-text-primary: #1a1a1a;
-  --color-text-secondary: #4a4a4a;
-  --color-card-bg: #e9ecef;
-  --color-link-bg: #ffffff;
-  --color-link-border: #dee2e6;
-  --color-link-hover: #f8f9fa;
   --spacing-xxs: 0.25rem;
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
@@ -22,6 +15,33 @@
   --bio-link-icon-size: 18px;
   --project-card-icon-size: 32px;
   --app-top-padding: 100px;
+
+  /* Light theme (default) */
+  --color-bg: #f8f9fa;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a4a4a;
+  --color-card-bg: #e9ecef;
+  --color-link-bg: #ffffff;
+  --color-link-border: #dee2e6;
+  --color-link-hover: #f8f9fa;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1a1a1a;
+    --color-text-primary: #f8f9fa;
+    --color-text-secondary: #b8b8b8;
+    --color-card-bg: #2d2d2d;
+    --color-link-bg: #1a1a1a;
+    --color-link-border: #404040;
+    --color-link-hover: #3a3a3a;
+  }
+}
+
+html,
+body,
+#root {
+  background-color: var(--color-bg);
 }
 
 /* App Container */
