@@ -21,6 +21,14 @@ export default function Bio() {
   const resumeIcon = theme === "dark" ? RESUME_ICON_WHITE : RESUME_ICON_BLACK;
   const githubIcon = theme === "dark" ? GITHUB_ICON_WHITE : GITHUB_ICON_BLACK;
 
+  const links = [
+    { icon: tiktokIcon, label: "TikTok", href: "https://tiktok.com" },
+    { icon: YOUTUBE_ICON, label: "YouTube", href: "https://youtube.com" },
+    { icon: emailIcon, label: "Email", href: "mailto:email@example.com" },
+    { icon: resumeIcon, label: "Resume", href: "#" },
+    { icon: githubIcon, label: "GitHub", href: "https://github.com" },
+  ];
+
   return (
     <div className="bio">
       <img src={HEADSHOT_IMAGE} alt="Fajar Dirham" className="bio__headshot" />
@@ -31,19 +39,17 @@ export default function Bio() {
         content about the books i read.
       </p>
       <div className="bio__links">
-        <BioLink icon={tiktokIcon} label="TikTok" href="https://tiktok.com" />
-        <BioLink
-          icon={YOUTUBE_ICON}
-          label="YouTube"
-          href="https://youtube.com"
-        />
-        <BioLink
-          icon={emailIcon}
-          label="Email"
-          href="mailto:email@example.com"
-        />
-        <BioLink icon={resumeIcon} label="Resume" href="#" />
-        <BioLink icon={githubIcon} label="GitHub" href="https://github.com" />
+        {links.map((link, index) => (
+          <BioLink
+            key={link.label}
+            icon={link.icon}
+            label={link.label}
+            href={link.href}
+            style={{
+              animationDelay: `${1.4 + index * 0.12}s`,
+            }}
+          />
+        ))}
       </div>
     </div>
   );

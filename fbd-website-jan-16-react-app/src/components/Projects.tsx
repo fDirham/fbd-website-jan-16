@@ -59,13 +59,16 @@ export default function Projects() {
 
   return (
     <div className="projects">
-      {getProjects().map((project) => (
+      {getProjects().map((project, index) => (
         <ProjectCard
           key={project.title}
           icon={project.icon}
           title={project.title}
           description={project.description}
           url={project.url}
+          style={{
+            animationDelay: `${3 + index * 0.5}s`,
+          }}
         />
       ))}
     </div>

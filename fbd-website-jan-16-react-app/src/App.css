@@ -57,6 +57,38 @@ body,
   min-height: 100vh;
 }
 
+/* Keyframe Animations */
+@keyframes fadeInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* Bio Section */
 .bio {
   display: flex;
@@ -65,6 +97,8 @@ body,
   gap: var(--spacing-sm);
   width: var(--bio-width);
   flex-shrink: 0;
+  animation: fadeInFromBottom 0.8s ease-out 0.2s;
+  animation-fill-mode: backwards;
 }
 
 .bio__headshot {
@@ -97,6 +131,8 @@ body,
   line-height: 1.6;
   margin: 0;
   max-width: 400px;
+  animation: fadeIn 0.6s ease-out 1s;
+  animation-fill-mode: backwards;
 }
 
 .bio__links {
@@ -121,6 +157,8 @@ body,
   font-weight: 700;
   transition: background-color 0.2s ease;
   flex-grow: 0;
+  animation: fadeInFromLeft 0.5s ease-out;
+  animation-fill-mode: backwards;
 }
 
 .bio-link:hover {
@@ -161,6 +199,8 @@ body,
   cursor: pointer;
   text-decoration: none;
   color: inherit;
+  animation: fadeInFromLeft 0.6s ease-out;
+  animation-fill-mode: backwards;
 }
 
 .project-card:hover {
@@ -204,12 +244,15 @@ body,
 @media (max-width: 770px) {
   :root {
     --bio-width: 100%;
+    --app-top-padding: 60px;
   }
 
   .app {
     flex-direction: column;
     gap: var(--spacing-lg);
     padding: var(--spacing-md);
+    padding-top: var(--app-top-padding);
+    padding-bottom: 300px;
   }
 
   .bio {
@@ -231,6 +274,10 @@ body,
   }
 
   .project-card {
+    width: 100%;
+  }
+
+  .project-card:hover {
     width: 100%;
   }
 }
