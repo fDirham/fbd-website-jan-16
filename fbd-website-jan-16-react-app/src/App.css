@@ -46,8 +46,8 @@ body,
 
 /* App Container */
 .app {
-  display: grid;
-  grid-template-columns: var(--bio-width) auto;
+  display: flex;
+  flex-direction: row;
   gap: var(--spacing-xl);
   max-width: 1400px;
   margin: 0 auto;
@@ -64,6 +64,7 @@ body,
   align-items: flex-start;
   gap: var(--spacing-sm);
   width: var(--bio-width);
+  flex-shrink: 0;
 }
 
 .bio__headshot {
@@ -158,11 +159,13 @@ body,
   width: 300px;
   transition: all 0.2s ease;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
 .project-card:hover {
   width: 310px;
-  box-shadow: 0 4px 12px rgba(255, 220, 44, 0.1);
+  box-shadow: 0 0px 12px rgba(255, 222, 58, 0.114);
 }
 
 .project-card__header {
@@ -198,13 +201,13 @@ body,
   /* Flexbox will handle wrapping automatically */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
   :root {
     --bio-width: 100%;
   }
 
   .app {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: var(--spacing-lg);
     padding: var(--spacing-md);
   }

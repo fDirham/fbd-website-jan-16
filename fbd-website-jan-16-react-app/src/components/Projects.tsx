@@ -5,7 +5,6 @@ import {
   NEKO_FOCUS_ICON,
   JUST_FOCUS_ICON,
   ROCKET_PIXELS_ICON,
-  PROFFY_AI_ICON,
   GITHUB_ICON_BLACK,
   GITHUB_ICON_WHITE,
 } from "../constants/images";
@@ -23,46 +22,37 @@ export default function Projects() {
         title: "Promethea (Novel)",
         description:
           "In a matriarchal Spartan war-academy, a ruthless warrior captures enemy forces, rides flying Drakons, and masters telepathy on her quest to become one of history's greatest heroines.",
+        url: "https://example.com/promethea",
       },
       {
         icon: BOOK_YAPPY_ICON,
         title: "Book Yappy",
         description: "iOS app to track your reading.",
+        url: "https://example.com/book-yappy",
       },
       {
         icon: NEKO_FOCUS_ICON,
         title: "NekoFocus",
         description: "iOS app. Pomodoro timer + cats.",
+        url: "https://example.com/nekofocus",
       },
       {
         icon: JUST_FOCUS_ICON,
         title: "Just Focus",
         description: "macOS app. Pomodoro timer in status bar",
+        url: "https://example.com/just-focus",
       },
       {
         icon: ROCKET_PIXELS_ICON,
         title: "Rocket Pixels",
         description: "Mobile game made in godot. Dodge asteroids!",
-      },
-      {
-        icon: PROFFY_AI_ICON,
-        title: "ProffyAI",
-        description: "AI homework helper",
+        url: "https://example.com/rocket-pixels",
       },
       {
         icon: githubIcon,
-        title: "Hacker Search",
-        description: "Semantic search engine to discover indie products",
-      },
-      {
-        icon: githubIcon,
-        title: "Gift Gabble",
-        description: "AI gift recommendations + Amazon affiliate links",
-      },
-      {
-        icon: githubIcon,
-        title: "Open Source Stuff",
-        description: "Idk just check my gh",
+        title: "Open Source Projects",
+        description: "JUST CHECK MY GITHUB!",
+        url: "https://github.com",
       },
     ];
   };
@@ -75,6 +65,7 @@ export default function Projects() {
           icon={project.icon}
           title={project.title}
           description={project.description}
+          url={project.url}
         />
       ))}
     </div>
