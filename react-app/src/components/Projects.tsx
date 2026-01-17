@@ -25,7 +25,7 @@ export default function Projects() {
         icon: PROMETHEA_ICON,
         title: "Promethea (Novel)",
         description:
-          "In a matriarchal Spartan war-academy, a ruthless warrior captures enemy forces, rides flying Drakons, and masters telepathy on her quest to become one of history's greatest heroines.",
+          "A ruthless warrior rivals a timid artistic boy in a matriarchal Spartan war-academy — learning to conjure flames, ride Drakons, and master telepathy on her quest to greatness.",
         url: "https://l.fajardirham.com/promethea_sample",
       },
       {
