@@ -1,42 +1,201 @@
-#root {
-  max-width: 1280px;
+:root {
+  --color-bg: #f8f9fa;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a4a4a;
+  --color-card-bg: #e9ecef;
+  --color-link-bg: #ffffff;
+  --color-link-border: #dee2e6;
+  --color-link-hover: #f8f9fa;
+  --spacing-xxs: 0.25rem;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --border-radius-xxs: 2px;
+  --border-radius-xs: 4px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-pill: 120px;
+  --border-radius-round: 50%;
+  --bio-width: 260px;
+  --bio-link-icon-size: 18px;
+  --project-card-icon-size: 32px;
+  --app-top-padding: 100px;
+}
+
+/* App Container */
+.app {
+  display: grid;
+  grid-template-columns: var(--bio-width) auto;
+  gap: var(--spacing-xl);
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: var(--spacing-lg);
+  padding-top: var(--app-top-padding);
+  background-color: var(--color-bg);
+  min-height: 100vh;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Bio Section */
+.bio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  width: var(--bio-width);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.bio__headshot {
+  width: 128px;
+  height: 128px;
+  border-radius: var(--border-radius-round);
+  object-fit: cover;
+  margin-bottom: var(--spacing-sm);
+  align-self: center;
+  background-color: var(--color-card-bg);
+}
+
+.bio__name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+  align-self: center;
+}
+
+.bio__title {
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  margin: 0;
+  align-self: center;
+}
+
+.bio__description {
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 400px;
+}
+
+.bio__links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  width: 100%;
+  margin-top: var(--spacing-sm);
+}
+
+/* Bio Link Component */
+.bio-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xxs) var(--spacing-xs);
+  background-color: var(--color-card-bg);
+  border-radius: var(--border-radius-xs);
+  text-decoration: none;
+  color: var(--color-text-primary);
+  font-weight: 700;
+  transition: background-color 0.2s ease;
+  flex-grow: 0;
+}
+
+.bio-link:hover {
+  background-color: var(--color-link-hover);
+}
+
+.bio-link__icon {
+  width: var(--bio-link-icon-size);
+  height: var(--bio-link-icon-size);
+  object-fit: contain;
+}
+
+.bio-link__label {
+  font-size: 0.75rem;
+}
+
+/* Projects Section */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  align-content: start;
+}
+
+/* Project Card Component */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  background-color: var(--color-card-bg);
+  border-radius: var(--border-radius-md);
+}
+
+.project-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.project-card__icon {
+  width: var(--project-card-icon-size);
+  height: var(--project-card-icon-size);
+  flex-shrink: 0;
+  border-radius: var(--border-radius-sm);
+  object-fit: cover;
+}
+
+.project-card__title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.project-card__description {
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --bio-width: 100%;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .app {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .bio {
+    align-items: center;
+    text-align: center;
+  }
 
-.read-the-docs {
-  color: #888;
+  .bio__description {
+    max-width: 100%;
+  }
+
+  .bio__links {
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .projects {
+    grid-template-columns: 1fr;
+  }
 }
