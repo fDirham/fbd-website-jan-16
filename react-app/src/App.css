@@ -84,20 +84,6 @@ body,
   }
 }
 
-@keyframes pulseBorder {
-  0%,
-  100% {
-    box-shadow:
-      0 0 0 0 var(--pulse-color-light),
-      0 0 0 8px var(--pulse-color-dark);
-  }
-  50% {
-    box-shadow:
-      0 0px 0px 8px var(--pulse-color-light),
-      0 0px 0px 12px var(--pulse-color-dark);
-  }
-}
-
 /* Orbit animations - each card orbits while staying upright */
 @keyframes orbit0 {
   from {
@@ -171,7 +157,7 @@ body,
   object-fit: cover;
   margin-bottom: var(--spacing-sm);
   align-self: center;
-  animation: pulseBorder var(--pulse-duration) ease-in-out infinite;
+  box-shadow: 0 4px 6px 2px rgba(0, 0, 0, 0.15);
 }
 
 .bio__name {
