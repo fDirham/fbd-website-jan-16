@@ -19,7 +19,7 @@ export default function Bio() {
     {
       icon: tiktokIcon,
       label: "TikTok",
-      href: "https://tiktok.com/@fbdwrites",
+      href: "https://tiktok.com/@fbdreads",
     },
     {
       icon: YOUTUBE_ICON,
