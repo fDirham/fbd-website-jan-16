@@ -28,17 +28,11 @@
   --carousel-stagger-interval: 0.5s;
   --carousel-fade-in-duration: 1.2s;
 
-  /* Headshot Pulse Animation */
-  --pulse-color-dark: #eb9225;
-  --pulse-color-light: #ebae62;
-  --pulse-duration: 3s;
-
   /* Light theme (default) */
-  --color-bg: #f8f9fa;
+  --color-bg: #fffdfa;
   --color-text-primary: #1a1a1a;
   --color-text-secondary: #4a4a4a;
-  --color-card-bg: #e9ecef;
-  --color-link-bg: #ffffff;
+  --color-card-bg: #f2ede6;
   --color-link-border: #dee2e6;
   --color-link-hover: #f8f9fa;
 }
@@ -49,7 +43,6 @@
     --color-text-primary: #f8f9fa;
     --color-text-secondary: #b8b8b8;
     --color-card-bg: #2d2d2d;
-    --color-link-bg: #1a1a1a;
     --color-link-border: #404040;
     --color-link-hover: #3a3a3a;
   }
@@ -250,13 +243,6 @@ body,
   animation: fadeIn var(--carousel-fade-in-duration) ease-out
     var(--circle-carousel-delay) backwards;
   box-shadow: 2px 10px 10px 0px rgba(0, 0, 0, 0.1);
-}
-
-.project-card:hover {
-  width: 310px;
-  box-shadow:
-    0 0 12px var(--pulse-color-light),
-    0 0 24px var(--pulse-color-dark);
 }
 
 .project-card__header {
