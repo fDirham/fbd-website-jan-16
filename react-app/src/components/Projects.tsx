@@ -25,8 +25,8 @@ export default function Projects() {
         icon: PROMETHEA_ICON,
         title: "Promethea (Novel)",
         description:
-          "A ruthless warrior girl rivals a weak timid boy in a matriarchal Spartan war-academy — learning to conjure flames, ride Drakons, and master telepathy on her quest to greatness.",
-        url: "https://l.fajardirham.com/promethea_sample",
+          "In a matriarchal, Sparta-inspired world, an ambitious warrior girl enters an elite war-academy, where she rivals a charming prince.",
+        url: "https://l.fajardirham.com/promethea",
       },
       {
         icon: BOOK_YAPPY_ICON,
